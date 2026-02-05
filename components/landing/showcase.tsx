@@ -15,16 +15,7 @@ const showcaseItems = [
 ]
 
 export function Showcase() {
-  const [offset, setOffset] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setOffset((prev) => prev - 1)
-    }, 30)
-    return () => clearInterval(interval)
-  }, [])
-
-  const duplicatedItems = [...showcaseItems, ...showcaseItems, ...showcaseItems]
+  const duplicatedItems = [...showcaseItems, ...showcaseItems, ...showcaseItems, ...showcaseItems]
 
   return (
     <section className="relative overflow-hidden border-y border-[#39FF14]/20 bg-card py-12">
@@ -39,8 +30,13 @@ export function Showcase() {
       <div className="relative">
         <motion.div
           className="flex gap-4"
-          style={{ x: offset }}
-          transition={{ type: "tween", ease: "linear" }}
+          animate={{ x: [0, -1000] }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+            repeatType: "loop",
+          }}
         >
           {duplicatedItems.map((item, index) => (
             <div

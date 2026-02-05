@@ -32,7 +32,7 @@ const testimonials = [
 ]
 
 export function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(1)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)
@@ -61,63 +61,56 @@ export function Testimonials() {
           </p>
         </motion.div>
 
-        <div className="relative mt-16">
-          <div className="flex items-center justify-center gap-4 md:gap-8">
+        <div className="relative mt-16 max-w-4xl mx-auto">
+          <div className="flex items-center justify-between gap-4">
             <button
               type="button"
               onClick={prevTestimonial}
-              className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-[#39FF14]/30 bg-background text-muted-foreground transition-all hover:bg-[#39FF14]/10 hover:text-[#39FF14] hover:border-[#39FF14]"
+              className="z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-[#39FF14]/30 bg-background text-muted-foreground transition-all hover:bg-[#39FF14]/10 hover:text-[#39FF14] hover:border-[#39FF14] sm:h-12 sm:w-12"
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="h-6 w-6" />
+              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
 
-            <div className="flex w-full max-w-4xl gap-4 overflow-hidden md:gap-8">
-              {testimonials.map((testimonial, index) => {
-                const isActive = index === currentIndex
-                return (
-                  <motion.div
-                    key={testimonial.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{
-                      opacity: isActive ? 1 : 0.5,
-                      scale: isActive ? 1 : 0.9,
-                    }}
-                    className={`w-full flex-shrink-0 rounded-2xl border ${
-                      isActive ? "border-[#39FF14]/60 bg-background shadow-[0_0_30px_rgba(57,255,20,0.15)]" : "border-[#39FF14]/20 bg-card"
-                    } p-6 transition-all md:p-8 ${
-                      isActive ? "" : "hidden md:block"
-                    }`}
-                  >
-                    <div className="mb-4 flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#39FF14] text-lg font-bold text-black shadow-[0_0_15px_rgba(57,255,20,0.4)]">
-                        {testimonial.avatar}
+            <div className="overflow-hidden w-full px-4">
+              <motion.div
+                className="flex"
+                animate={{ x: `-${currentIndex * 100}%` }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="w-full flex-shrink-0 px-2 sm:px-4">
+                    <div className="rounded-2xl border border-[#39FF14]/20 bg-card p-6 md:p-8 hover:border-[#39FF14]/40 transition-colors h-full">
+                      <div className="mb-4 flex items-center gap-4">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#39FF14] text-lg font-bold text-black shadow-[0_0_15px_rgba(57,255,20,0.4)]">
+                          {testimonial.avatar}
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
+                          <p className="text-sm text-muted-foreground">
+                            {testimonial.role} at {testimonial.company}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
-                        <p className="text-sm text-muted-foreground">
-                          {testimonial.role} at {testimonial.company}
-                        </p>
+                      <div className="mb-4 flex gap-1">
+                        {Array.from({ length: testimonial.rating }).map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-[#39FF14] text-[#39FF14]" />
+                        ))}
                       </div>
+                      <p className="text-muted-foreground italic">&quot;{testimonial.content}&quot;</p>
                     </div>
-                    <div className="mb-4 flex gap-1">
-                      {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-[#39FF14] text-[#39FF14]" />
-                      ))}
-                    </div>
-                    <p className="text-muted-foreground">{testimonial.content}</p>
-                  </motion.div>
-                )
-              })}
+                  </div>
+                ))}
+              </motion.div>
             </div>
 
             <button
               type="button"
               onClick={nextTestimonial}
-              className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-[#39FF14]/30 bg-background text-muted-foreground transition-all hover:bg-[#39FF14]/10 hover:text-[#39FF14] hover:border-[#39FF14]"
+              className="z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-[#39FF14]/30 bg-background text-muted-foreground transition-all hover:bg-[#39FF14]/10 hover:text-[#39FF14] hover:border-[#39FF14] sm:h-12 sm:w-12"
               aria-label="Next testimonial"
             >
-              <ChevronRight className="h-6 w-6" />
+              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
           </div>
 
@@ -127,9 +120,8 @@ export function Testimonials() {
                 key={index}
                 type="button"
                 onClick={() => setCurrentIndex(index)}
-                className={`h-2 w-2 rounded-full transition-all ${
-                  index === currentIndex ? "w-6 bg-[#39FF14] shadow-[0_0_10px_rgba(57,255,20,0.5)]" : "bg-[#39FF14]/30"
-                }`}
+                className={`h-2 w-2 rounded-full transition-all ${index === currentIndex ? "w-6 bg-[#39FF14] shadow-[0_0_10px_rgba(57,255,20,0.5)]" : "bg-[#39FF14]/30"
+                  }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}

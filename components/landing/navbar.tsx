@@ -9,42 +9,42 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#39FF14]/20 bg-background/90 backdrop-blur-xl">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#39FF14]/10 bg-background/60 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#39FF14] shadow-[0_0_15px_rgba(57,255,20,0.5)]">
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#39FF14] shadow-[0_0_15px_rgba(57,255,20,0.5)] transition-transform group-hover:scale-110">
             <Zap className="h-5 w-5 text-black" />
           </div>
-          <span className="text-xl font-bold text-foreground">AdMorph <span className="text-[#39FF14]">AI</span></span>
+          <span className="text-xl font-bold text-foreground tracking-tight">AdMorph <span className="text-[#39FF14] drop-shadow-[0_0_10px_rgba(57,255,20,0.5)]">AI</span></span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          <Link href="#features" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <Link href="#features" className="text-sm font-medium text-muted-foreground transition-colors hover:text-[#39FF14]">
             Features
           </Link>
-          <Link href="#how-it-works" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <Link href="#how-it-works" className="text-sm font-medium text-muted-foreground transition-colors hover:text-[#39FF14]">
             How it Works
           </Link>
-          <Link href="#pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <Link href="#pricing" className="text-sm font-medium text-muted-foreground transition-colors hover:text-[#39FF14]">
             Pricing
           </Link>
-          <Link href="#faq" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <Link href="#faq" className="text-sm font-medium text-muted-foreground transition-colors hover:text-[#39FF14]">
             FAQ
           </Link>
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
-          <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
+          <Button variant="ghost" className="text-muted-foreground hover:text-foreground hover:bg-[#39FF14]/10">
             Log in
           </Button>
-          <Button className="bg-[#39FF14] text-black font-semibold hover:bg-[#39FF14]/90 shadow-[0_0_20px_rgba(57,255,20,0.4)]">
+          <Button className="bg-[#39FF14] text-black font-bold hover:bg-[#32d613] shadow-[0_0_20px_rgba(57,255,20,0.4)] hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] transition-all transform hover:-translate-y-0.5">
             Launch App
           </Button>
         </div>
 
         <button
           type="button"
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground p-2"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -52,26 +52,43 @@ export function Navbar() {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="border-t border-border bg-background md:hidden">
-          <nav className="flex flex-col gap-4 px-4 py-6">
-            <Link href="#features" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>
+        <div className="absolute top-16 left-0 right-0 border-b border-[#39FF14]/20 bg-background/95 backdrop-blur-2xl md:hidden">
+          <nav className="flex flex-col gap-4 px-4 py-8 animate-in slide-in-from-top-5 fade-in duration-200">
+            <Link 
+              href="#features" 
+              className="text-lg font-medium text-foreground/80 hover:text-[#39FF14] transition-colors" 
+              onClick={() => setIsOpen(false)}
+            >
               Features
             </Link>
-            <Link href="#how-it-works" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>
+            <Link 
+              href="#how-it-works" 
+              className="text-lg font-medium text-foreground/80 hover:text-[#39FF14] transition-colors" 
+              onClick={() => setIsOpen(false)}
+            >
               How it Works
             </Link>
-            <Link href="#pricing" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>
+            <Link 
+              href="#pricing" 
+              className="text-lg font-medium text-foreground/80 hover:text-[#39FF14] transition-colors" 
+              onClick={() => setIsOpen(false)}
+            >
               Pricing
             </Link>
-            <Link href="#faq" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>
+            <Link 
+              href="#faq" 
+              className="text-lg font-medium text-foreground/80 hover:text-[#39FF14] transition-colors" 
+              onClick={() => setIsOpen(false)}
+            >
               FAQ
             </Link>
-            <div className="flex flex-col gap-2 pt-4">
-              <Button variant="ghost" className="w-full justify-start text-muted-foreground">
+            <div className="flex flex-col gap-3 pt-6 border-t border-[#39FF14]/10">
+              <Button variant="ghost" className="w-full justify-start text-muted-foreground hover:text-foreground hover:bg-[#39FF14]/10">
                 Log in
               </Button>
-              <Button className="w-full bg-primary text-primary-foreground">
+              <Button className="w-full bg-[#39FF14] text-black font-bold shadow-[0_0_20px_rgba(57,255,20,0.3)]">
                 Launch App
               </Button>
             </div>

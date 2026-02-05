@@ -85,15 +85,14 @@ export function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`relative overflow-hidden rounded-2xl border ${
-                plan.popular
-                  ? "border-[#39FF14]/60 bg-gradient-to-b from-[#39FF14]/15 to-card shadow-[0_0_40px_rgba(57,255,20,0.2)]"
+              className={`relative overflow-hidden rounded-2xl border ${plan.popular
+                  ? "border-[#39FF14] bg-gradient-to-b from-[#39FF14]/20 to-card shadow-[0_0_50px_rgba(57,255,20,0.3)] scale-105 z-10"
                   : "border-[#39FF14]/20 bg-card hover:border-[#39FF14]/40 hover:shadow-[0_0_30px_rgba(57,255,20,0.1)] transition-all"
-              } p-8`}
+                } p-8`}
             >
               {plan.popular && (
-                <div className="absolute -right-12 top-6 rotate-45 bg-[#39FF14] px-12 py-1 text-xs font-semibold text-black shadow-[0_0_20px_rgba(57,255,20,0.5)]">
-                  Most Popular
+                <div className="absolute -right-12 top-6 rotate-45 bg-[#39FF14] px-12 py-1 text-xs font-bold text-black shadow-[0_0_20px_rgba(57,255,20,0.5)] tracking-wider">
+                  MOST POPULAR
                 </div>
               )}
 
@@ -117,11 +116,10 @@ export function Pricing() {
               </ul>
 
               <Button
-                className={`w-full ${
-                  plan.popular
+                className={`w-full ${plan.popular
                     ? "bg-[#39FF14] text-black font-semibold hover:bg-[#39FF14]/90 shadow-[0_0_20px_rgba(57,255,20,0.4)]"
                     : "bg-secondary text-secondary-foreground hover:bg-[#39FF14]/10 hover:text-[#39FF14] border border-[#39FF14]/30"
-                }`}
+                  }`}
               >
                 {plan.cta}
               </Button>
