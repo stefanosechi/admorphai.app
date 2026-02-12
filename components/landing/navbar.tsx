@@ -34,11 +34,11 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
-          <Button variant="ghost" className="text-muted-foreground hover:text-foreground hover:bg-[#39FF14]/10">
-            Log in
+          <Button asChild variant="ghost" className="text-muted-foreground hover:text-foreground hover:bg-[#39FF14]/10">
+            <Link href="/login">Log in</Link>
           </Button>
-          <Button className="bg-[#39FF14] text-black font-bold hover:bg-[#32d613] shadow-[0_0_20px_rgba(57,255,20,0.4)] hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] transition-all transform hover:-translate-y-0.5">
-            Launch App
+          <Button asChild className="bg-[#39FF14] text-black font-bold hover:bg-[#32d613] shadow-[0_0_20px_rgba(57,255,20,0.4)] hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] transition-all transform hover:-translate-y-0.5">
+            <Link href="/login">Launch App</Link>
           </Button>
         </div>
 
@@ -85,11 +85,11 @@ export function Navbar() {
               FAQ
             </Link>
             <div className="flex flex-col gap-3 pt-6 border-t border-[#39FF14]/10">
-              <Button variant="ghost" className="w-full justify-start text-muted-foreground hover:text-foreground hover:bg-[#39FF14]/10">
-                Log in
+              <Button asChild variant="ghost" className="w-full justify-start text-muted-foreground hover:text-foreground hover:bg-[#39FF14]/10" onClick={() => setIsOpen(false)}>
+                <Link href="/login">Log in</Link>
               </Button>
-              <Button className="w-full bg-[#39FF14] text-black font-bold shadow-[0_0_20px_rgba(57,255,20,0.3)]">
-                Launch App
+              <Button asChild className="w-full bg-[#39FF14] text-black font-bold shadow-[0_0_20px_rgba(57,255,20,0.3)]" onClick={() => setIsOpen(false)}>
+                <Link href="/login">Launch App</Link>
               </Button>
             </div>
           </nav>
