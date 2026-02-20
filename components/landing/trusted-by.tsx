@@ -1,15 +1,13 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 
-const logos = [
-  { name: "MetaAds", icon: "M" },
-  { name: "TikTok Ads", icon: "T" },
-  { name: "Google Ads", icon: "G" },
-  { name: "Snapchat", icon: "S" },
-  { name: "Pinterest", icon: "P" },
-  { name: "LinkedIn", icon: "L" },
-]
+const logos = Array.from({ length: 6 }, (_, index) => ({
+  id: index,
+  src: "/logos%20home%20page/Logo-della-Carhartt.png",
+  alt: "Carhartt logo",
+}))
 
 export function TrustedBy() {
   return (
@@ -35,13 +33,12 @@ export function TrustedBy() {
         >
           {logos.map((logo) => (
             <div
-              key={logo.name}
-              className="flex items-center gap-2 text-muted-foreground/60 transition-all hover:text-[#39FF14] group"
+              key={logo.id}
+              className="flex items-center justify-center text-muted-foreground/60 transition-all hover:text-[#39FF14] group"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#39FF14]/30 bg-secondary text-lg font-bold text-[#39FF14]">
-                {logo.icon}
+              <div className="relative h-10 w-28 rounded-lg border border-[#39FF14]/30 bg-secondary px-3 py-1 md:h-12 md:w-32">
+                <Image src={logo.src} alt={logo.alt} fill className="object-contain" />
               </div>
-              <span className="hidden text-sm font-medium sm:inline">{logo.name}</span>
             </div>
           ))}
         </motion.div>
