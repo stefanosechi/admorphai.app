@@ -13,7 +13,7 @@ export function TrustedBy() {
   return (
     <section className="relative border-b border-[#39FF14]/20 bg-background py-16 overflow-hidden">
       {/* Subtle glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[200px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39FF14]/5 blur-[80px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39FF14]/10 blur-[100px]" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.p
           initial={{ opacity: 0 }}

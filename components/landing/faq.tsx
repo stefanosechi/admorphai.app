@@ -10,28 +10,28 @@ import {
 
 const faqs = [
   {
-    question: "How does the AI generate video ads?",
-    answer: "Our AI analyzes your product photos, brand assets, and marketing goals to generate high-converting video ads. It uses advanced machine learning trained on millions of successful ad campaigns to understand what works best for your target audience and platform.",
+    question: "How does the credit system work?",
+    answer: "AdMorph operates on a flexible credit system. Each plan comes with a monthly allowance of credits (e.g., 800 for Skeptic, 60,000 for Agency). You spend credits to generate videos. If you need more, you can buy top-up packs starting at €5 for 400 credits. 1 Euro = 100 Credits.",
+  },
+  {
+    question: "Do my credits expire?",
+    answer: "Monthly subscription credits reset each billing cycle. However, any additional credits you purchase as 'Top-ups' never expire and roll over indefinitely as long as you have an active subscription.",
+  },
+  {
+    question: "What is the difference between Low Res and HD videos?",
+    answer: "Low Res videos are perfect for testing concepts and drafts. HD videos (1080p) are production-ready and optimized for social media platforms like TikTok, Reels, and YouTube Shorts. The credit cost varies based on resolution and duration.",
+  },
+  {
+    question: "Can I cancel my subscription anytime?",
+    answer: "Yes, you can cancel your subscription at any time. You will retain access to your plan features and remaining credits until the end of your current billing period.",
   },
   {
     question: "What platforms are supported?",
-    answer: "AdMorph supports all major advertising platforms including TikTok, Instagram Reels, Facebook, YouTube Shorts, Snapchat, Pinterest, and LinkedIn. We auto-optimize dimensions and formats for each platform.",
+    answer: "We support all major vertical video platforms including TikTok, Instagram Reels, YouTube Shorts, Snapchat, and more. Our AI automatically optimizes the aspect ratio and safe zones for each platform.",
   },
   {
-    question: "What is the pricing structure?",
-    answer: "We offer three plans: Basic ($30/month) for startups, Pro ($129/month) for growing brands, and Enterprise ($309/month) for agencies and high-volume advertisers. All plans include a 7-day free trial.",
-  },
-  {
-    question: "Is there a free trial?",
-    answer: "Yes! All plans come with a 7-day free trial. No credit card required to start. You can generate up to 10 video ads during the trial to test our platform.",
-  },
-  {
-    question: "Do you offer support?",
-    answer: "Absolutely. Basic plans include email support, Pro plans get priority support with 24-hour response times, and Enterprise plans include a dedicated account manager and custom onboarding.",
-  },
-  {
-    question: "Can I use my own brand guidelines?",
-    answer: "Yes! You can upload your brand kit including logos, color palettes, fonts, and style guides. Our AI learns your brand identity and ensures every generated ad stays on-brand.",
+    question: "Do you offer refunds?",
+    answer: "We offer a 7-day money-back guarantee for the 'Skeptic' plan if you haven't used more than 50% of your credits. For other plans, please contact our support team for assistance.",
   },
 ]
 

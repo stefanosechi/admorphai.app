@@ -1,38 +1,39 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
 import { useRef, useState } from "react"
+import { Maximize2 } from "lucide-react"
 
 const showcaseItems = [
   {
     id: 1,
-    title: "Funnel Ads USA",
-    category: "Med",
-    src: "/video%20slideshow/funnel-ads-usa-med.mp4",
+    title: "AdMorph Media 1",
+    category: "Media",
+    src: "/video slideshow/admorph-media-1.mp4",
   },
   {
     id: 2,
-    title: "Funnel Ads ES",
-    category: "ES",
-    src: "/video%20slideshow/funnel-es.mp4",
+    title: "AdMorph Media 2",
+    category: "Media",
+    src: "/video slideshow/admorph-media-2.mp4",
   },
   {
     id: 3,
-    title: "Landing Funnel Top",
-    category: "Top",
-    src: "/video%20slideshow/landing-funnel-ads-top.mp4",
+    title: "AdMorph Media 3",
+    category: "Media",
+    src: "/video slideshow/admorph-media-3.mp4",
   },
   {
     id: 4,
-    title: "Landing Funnel Top+",
-    category: "Top+",
-    src: "/video%20slideshow/landing-funnel-ads-top-top.mp4",
+    title: "AdMorph Media 4",
+    category: "Media",
+    src: "/video slideshow/admorph-media-4.mp4",
   },
   {
     id: 5,
-    title: "UGC SetaBeauty",
-    category: "UGC",
-    src: "/video%20slideshow/ugc-setabeauty.mp4",
+    title: "AdMorph Media 5",
+    category: "Media",
+    src: "/video slideshow/admorph-media-5.mp4",
   },
 ]
 
@@ -42,6 +43,8 @@ export function Showcase() {
   const [mutedState, setMutedState] = useState<boolean[]>(() =>
     Array(showcaseItems.length * 4).fill(true),
   )
+  const controls = useAnimation()
+  const [isHovered, setIsHovered] = useState(false)
 
   const handleToggleMute = (index: number) => {
     const video = videoRefs.current[index]
@@ -55,25 +58,49 @@ export function Showcase() {
     })
   }
 
+  const handleFullscreen = (index: number) => {
+    const video = videoRefs.current[index]
+    if (!video) return
+    if (video.requestFullscreen) {
+      video.requestFullscreen()
+    } else if ((video as any).webkitRequestFullscreen) {
+      (video as any).webkitRequestFullscreen()
+    } else if ((video as any).msRequestFullscreen) {
+      (video as any).msRequestFullscreen()
+    }
+  }
+
   return (
     <section className="relative overflow-hidden border-y border-[#39FF14]/20 bg-card py-12">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-[#39FF14]/5 to-transparent" />
+      {/* Enhanced Green Glow Background */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39FF14]/10 blur-[100px]" />
+      
       <div className="mx-auto mb-8 max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="text-center text-sm font-medium uppercase tracking-wider text-muted-foreground">
           AI-Generated Video Ads
         </p>
       </div>
 
-      <div className="relative">
+      <div 
+        className="relative"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onTouchStart={() => setIsHovered(true)}
+        onTouchEnd={() => setIsHovered(false)}
+      >
         <motion.div
           className="flex gap-6"
-          animate={{ x: [0, -1000] }}
+          animate={isHovered ? {} : { x: [0, -1000] }}
           transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-            repeatType: "loop",
+            x: {
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+              repeatType: "loop",
+            }
           }}
+          style={{ x: isHovered ? undefined : 0 }}
         >
           {duplicatedItems.map((item, index) => (
             <div
@@ -92,14 +119,22 @@ export function Showcase() {
                   playsInline
                   autoPlay
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/40" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-[#39FF14]/5 to-black/40" />
                 <button
                   type="button"
                   onClick={() => handleToggleMute(index)}
                   aria-label={mutedState[index] ? "Attiva audio" : "Muta audio"}
-                  className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/80 text-[11px] text-white shadow-[0_0_15px_rgba(0,0,0,0.5)]"
+                  className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/80 text-[11px] text-white shadow-[0_0_15px_rgba(0,0,0,0.5)] z-10 hover:bg-black hover:scale-110 transition-all"
                 >
                   <span>{mutedState[index] ? "🔇" : "🔊"}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleFullscreen(index)}
+                  aria-label="Schermo intero"
+                  className="absolute right-2 bottom-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/80 text-white shadow-[0_0_15px_rgba(0,0,0,0.5)] z-10 hover:bg-black hover:scale-110 transition-all"
+                >
+                  <Maximize2 className="h-3.5 w-3.5" />
                 </button>
               </div>
             </div>

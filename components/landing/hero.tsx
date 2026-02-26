@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 import { ArrowRight, Play, Sparkles } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -8,14 +9,14 @@ export function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-background pt-16">
       {/* Main green glow at top */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-full max-w-[800px] -translate-x-1/2 rounded-full bg-[#39FF14]/20 blur-[100px] opacity-50 sm:opacity-100" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-full max-w-[1000px] -translate-x-1/2 rounded-full bg-[#39FF14]/25 blur-[120px] opacity-60 sm:opacity-100" />
 
       {/* Side glows */}
-      <div className="pointer-events-none absolute -left-40 top-1/3 h-[300px] w-[300px] rounded-full bg-[#39FF14]/10 blur-[80px] opacity-40 sm:h-[400px] sm:w-[400px] sm:opacity-100" />
-      <div className="pointer-events-none absolute -right-40 top-1/2 h-[300px] w-[300px] rounded-full bg-[#39FF14]/10 blur-[80px] opacity-40 sm:h-[400px] sm:w-[400px] sm:opacity-100" />
+      <div className="pointer-events-none absolute -left-40 top-1/3 h-[400px] w-[400px] rounded-full bg-[#39FF14]/15 blur-[100px] opacity-50 sm:h-[500px] sm:w-[500px] sm:opacity-100" />
+      <div className="pointer-events-none absolute -right-40 top-1/2 h-[400px] w-[400px] rounded-full bg-[#39FF14]/15 blur-[100px] opacity-50 sm:h-[500px] sm:w-[500px] sm:opacity-100" />
 
       {/* Background gradient */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#39FF14]/15 via-background to-background" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#39FF14]/20 via-background to-background" />
 
       {/* Grid pattern with green tint */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#39FF14/5_1px,transparent_1px),linear-gradient(to_bottom,#39FF14/5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
@@ -60,9 +61,11 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-10 flex flex-col gap-4 sm:flex-row"
           >
-            <Button size="lg" className="gap-2 bg-[#39FF14] px-8 text-black font-semibold hover:bg-[#39FF14]/90 shadow-[0_0_30px_rgba(57,255,20,0.4)] hover:shadow-[0_0_40px_rgba(57,255,20,0.6)] transition-all">
-              Start Creating Now
-              <ArrowRight className="h-4 w-4" />
+            <Button asChild size="lg" className="gap-2 bg-[#39FF14] px-8 text-black font-semibold hover:bg-[#39FF14]/90 shadow-[0_0_30px_rgba(57,255,20,0.4)] hover:shadow-[0_0_40px_rgba(57,255,20,0.6)] transition-all">
+              <Link href="https://admorph.lovable.app/auth">
+                Start Creating Now
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
             <Button size="lg" variant="outline" className="gap-2 border-[#39FF14]/50 text-[#39FF14] hover:bg-[#39FF14]/10 hover:border-[#39FF14] bg-transparent transition-all">
               <Play className="h-4 w-4 fill-current" />

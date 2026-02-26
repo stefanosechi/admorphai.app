@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
 
@@ -37,9 +38,11 @@ export function CTA() {
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button size="lg" className="gap-2 bg-[#39FF14] px-8 text-black font-semibold hover:bg-[#39FF14]/90 shadow-[0_0_30px_rgba(57,255,20,0.5)] hover:shadow-[0_0_40px_rgba(57,255,20,0.7)] transition-all">
-                Start Creating Free
-                <ArrowRight className="h-4 w-4" />
+              <Button asChild size="lg" className="gap-2 bg-[#39FF14] px-8 text-black font-semibold hover:bg-[#39FF14]/90 shadow-[0_0_30px_rgba(57,255,20,0.5)] hover:shadow-[0_0_40px_rgba(57,255,20,0.7)] transition-all">
+                <Link href="https://admorph.lovable.app/auth">
+                  Start Creating Free
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </Button>
               <p className="text-sm text-muted-foreground">No credit card required</p>
             </div>

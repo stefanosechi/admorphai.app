@@ -1,29 +1,19 @@
+import Image from "next/image"
 import Link from "next/link"
-import { Zap } from "lucide-react"
 
 const footerLinks = {
   product: [
     { name: "Features", href: "#features" },
     { name: "Pricing", href: "#pricing" },
-    { name: "API", href: "#" },
-    { name: "Integrations", href: "#" },
-  ],
-  resources: [
-    { name: "Docs", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Tutorials", href: "#" },
-    { name: "Academy", href: "#" },
   ],
   company: [
-    { name: "About", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "mailto:admorphaiproject@gmail.com" },
   ],
   legal: [
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
-    { name: "Cookies", href: "#" },
+    { name: "Privacy", href: "/privacy" },
+    { name: "Terms", href: "/terms" },
+    { name: "Cookies", href: "/cookies" },
   ],
 }
 
@@ -35,18 +25,22 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-[#39FF14]/20 bg-card overflow-hidden">
+    <footer className="relative border-t border-[#39FF14]/20 bg-background overflow-hidden">
       {/* Background glow */}
-      <div className="pointer-events-none absolute left-1/4 -bottom-20 h-[300px] w-[400px] rounded-full bg-[#39FF14]/5 blur-[100px]" />
+      <div className="pointer-events-none absolute left-1/4 -bottom-20 h-[500px] w-[600px] rounded-full bg-[#39FF14]/15 blur-[120px]" />
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid gap-8 lg:grid-cols-6">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#39FF14] shadow-[0_0_15px_rgba(57,255,20,0.4)]">
-                <Zap className="h-5 w-5 text-black" />
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="relative h-10 w-32 transition-transform group-hover:scale-105">
+                <Image
+                  src="/Logo e favicon/logoadmorphai-removebg-preview.png"
+                  alt="AdMorph AI"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <span className="text-xl font-bold text-foreground">AdMorph <span className="text-[#39FF14]">AI</span></span>
             </Link>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               Transform your product photos into high-converting video ads with the power of AI.
@@ -70,22 +64,6 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold text-foreground">Product</h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-[#39FF14]"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-4 text-sm font-semibold text-foreground">Resources</h4>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}

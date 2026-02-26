@@ -45,10 +45,11 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="relative border-y border-[#39FF14]/20 bg-card py-24 sm:py-32 overflow-hidden">
+    <section id="features" className="relative border-y border-[#39FF14]/20 bg-card/50 py-24 sm:py-32 overflow-hidden">
       {/* Background glows */}
-      <div className="pointer-events-none absolute -left-40 top-1/4 h-[400px] w-[400px] rounded-full bg-[#39FF14]/5 blur-[100px]" />
-      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-[400px] w-[400px] rounded-full bg-[#39FF14]/5 blur-[100px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39FF14]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -left-40 top-1/4 h-[500px] w-[500px] rounded-full bg-[#39FF14]/10 blur-[100px]" />
+      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-[500px] w-[500px] rounded-full bg-[#39FF14]/10 blur-[100px]" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

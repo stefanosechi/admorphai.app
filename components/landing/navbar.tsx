@@ -1,8 +1,9 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Zap } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { useState } from "react"
 
 export function Navbar() {
@@ -12,10 +13,15 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#39FF14]/10 bg-background/60 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#39FF14] shadow-[0_0_15px_rgba(57,255,20,0.5)] transition-transform group-hover:scale-110">
-            <Zap className="h-5 w-5 text-black" />
+          <div className="relative h-10 w-32 transition-transform group-hover:scale-105">
+            <Image
+              src="/Logo e favicon/logoadmorphai-removebg-preview.png"
+              alt="AdMorph AI"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
-          <span className="text-xl font-bold text-foreground tracking-tight">AdMorph <span className="text-[#39FF14] drop-shadow-[0_0_10px_rgba(57,255,20,0.5)]">AI</span></span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -35,10 +41,10 @@ export function Navbar() {
 
         <div className="hidden items-center gap-4 md:flex">
           <Button asChild variant="ghost" className="text-muted-foreground hover:text-foreground hover:bg-[#39FF14]/10">
-            <Link href="/login">Log in</Link>
+            <Link href="https://admorph.lovable.app/auth">Log in</Link>
           </Button>
           <Button asChild className="bg-[#39FF14] text-black font-bold hover:bg-[#32d613] shadow-[0_0_20px_rgba(57,255,20,0.4)] hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] transition-all transform hover:-translate-y-0.5">
-            <Link href="/login">Launch App</Link>
+            <Link href="https://calendly.com/" target="_blank">Book Demo</Link>
           </Button>
         </div>
 
@@ -86,10 +92,10 @@ export function Navbar() {
             </Link>
             <div className="flex flex-col gap-3 pt-6 border-t border-[#39FF14]/10">
               <Button asChild variant="ghost" className="w-full justify-start text-muted-foreground hover:text-foreground hover:bg-[#39FF14]/10" onClick={() => setIsOpen(false)}>
-                <Link href="/login">Log in</Link>
+                <Link href="https://admorph.lovable.app/auth">Log in</Link>
               </Button>
               <Button asChild className="w-full bg-[#39FF14] text-black font-bold shadow-[0_0_20px_rgba(57,255,20,0.3)]" onClick={() => setIsOpen(false)}>
-                <Link href="/login">Launch App</Link>
+                <Link href="https://calendly.com/" target="_blank">Book Demo</Link>
               </Button>
             </div>
           </nav>
