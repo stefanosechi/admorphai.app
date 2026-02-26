@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useAnimation } from "framer-motion"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { Maximize2 } from "lucide-react"
 
 const showcaseItems = [
@@ -9,31 +9,31 @@ const showcaseItems = [
     id: 1,
     title: "AdMorph Media 1",
     category: "Media",
-    src: "/video slideshow/admorph-media-1.mp4",
+    src: "/video%20slideshow/admorph-media-1.mp4",
   },
   {
     id: 2,
     title: "AdMorph Media 2",
     category: "Media",
-    src: "/video slideshow/admorph-media-2.mp4",
+    src: "/video%20slideshow/admorph-media-2.mp4",
   },
   {
     id: 3,
     title: "AdMorph Media 3",
     category: "Media",
-    src: "/video slideshow/admorph-media-3.mp4",
+    src: "/video%20slideshow/admorph-media-3.mp4",
   },
   {
     id: 4,
     title: "AdMorph Media 4",
     category: "Media",
-    src: "/video slideshow/admorph-media-4.mp4",
+    src: "/video%20slideshow/admorph-media-4.mp4",
   },
   {
     id: 5,
     title: "AdMorph Media 5",
     category: "Media",
-    src: "/video slideshow/admorph-media-5.mp4",
+    src: "/video%20slideshow/admorph-media-5.mp4",
   },
 ]
 
@@ -45,6 +45,16 @@ export function Showcase() {
   )
   const controls = useAnimation()
   const [isHovered, setIsHovered] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   const handleToggleMute = (index: number) => {
     const video = videoRefs.current[index]
@@ -83,15 +93,15 @@ export function Showcase() {
       </div>
 
       <div 
-        className="relative"
+        className="relative overflow-x-auto md:overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onTouchStart={() => setIsHovered(true)}
         onTouchEnd={() => setIsHovered(false)}
       >
         <motion.div
-          className="flex gap-6"
-          animate={isHovered ? {} : { x: [0, -1000] }}
+          className="flex gap-6 px-4 md:px-0"
+          animate={!isMobile && !isHovered ? { x: [0, -1000] } : {}}
           transition={{
             x: {
               duration: 20,
@@ -100,12 +110,12 @@ export function Showcase() {
               repeatType: "loop",
             }
           }}
-          style={{ x: isHovered ? undefined : 0 }}
+          style={{ x: !isMobile && !isHovered ? 0 : undefined }}
         >
           {duplicatedItems.map((item, index) => (
             <div
               key={`${item.id}-${index}`}
-              className="group relative h-80 w-40 flex-shrink-0 overflow-hidden rounded-xl border border-[#39FF14]/30 bg-secondary transition-all hover:-translate-y-1 hover:border-[#39FF14] hover:shadow-[0_0_30px_rgba(57,255,20,0.35)] sm:h-[460px] sm:w-56"
+              className="group relative h-96 w-64 flex-shrink-0 overflow-hidden rounded-xl border border-[#39FF14]/30 bg-secondary transition-all hover:-translate-y-1 hover:border-[#39FF14] hover:shadow-[0_0_30px_rgba(57,255,20,0.35)] sm:h-[460px] sm:w-56"
             >
               <div className="relative h-full w-full">
                 <video

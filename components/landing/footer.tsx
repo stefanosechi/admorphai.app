@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { Heart } from "lucide-react"
 
 const footerLinks = {
   product: [
@@ -33,7 +34,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="relative h-10 w-32 transition-transform group-hover:scale-105">
+              <div className="relative h-12 w-40 transition-transform group-hover:scale-105">
                 <Image
                   src="/Logo e favicon/logoadmorphai-removebg-preview.png"
                   alt="AdMorph AI"
@@ -110,12 +111,22 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#39FF14]/20 pt-8 sm:flex-row">
-          <p className="text-sm text-muted-foreground">
-            © 2026 AdMorph AI. All rights reserved.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Made with AI, for AI-powered marketing
-          </p>
+          <div className="flex flex-col items-center sm:items-start gap-1">
+            <p className="text-sm text-muted-foreground">
+              © 2026 AdMorph AI. All rights reserved.
+            </p>
+            <p className="text-xs text-muted-foreground/60">
+              sab technologies IE0193642SB
+            </p>
+          </div>
+          <div className="flex flex-col items-center sm:items-end gap-1">
+            <p className="text-sm text-muted-foreground">
+              Made with AI, for AI-powered marketing
+            </p>
+            <p className="text-sm text-muted-foreground flex items-center gap-1">
+              Made with <Heart className="h-3 w-3 fill-red-500 text-red-500 animate-pulse" /> in Italy
+            </p>
+          </div>
         </div>
       </div>
     </footer>
