@@ -96,11 +96,11 @@ export function Hero() {
                   </div>
                 </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/80 to-transparent p-6">
-                <p className="text-sm text-muted-foreground">
-                  Watch how AdMorph transforms product photos into scroll-stopping video ads
-                </p>
-              </div>
+            </div>
+            <div className="mt-4 text-center">
+              <p className="text-sm text-muted-foreground">
+                Watch how AdMorph transforms product photos into scroll-stopping video ads
+              </p>
             </div>
           </motion.div>
         </div>

@@ -58,7 +58,7 @@ export function HowItWorks() {
               transition={{ delay: index * 0.1 }}
               className="group relative z-10"
             >
-              <div className="relative overflow-hidden rounded-2xl border border-[#39FF14]/20 bg-card p-8 transition-all duration-300 hover:border-[#39FF14] hover:shadow-[0_0_30px_rgba(57,255,20,0.2)] hover:-translate-y-2">
+              <div className="relative overflow-hidden rounded-2xl border border-[#39FF14]/20 bg-card p-6 sm:p-8 transition-all duration-300 hover:border-[#39FF14] hover:shadow-[0_0_30px_rgba(57,255,20,0.2)] hover:-translate-y-2">
                 <div className="absolute -right-4 -top-4 text-8xl font-bold text-[#39FF14]/5 transition-colors group-hover:text-[#39FF14]/10">
                   {step.step}
                 </div>
@@ -67,7 +67,7 @@ export function HowItWorks() {
                     <step.icon className="h-7 w-7" />
                   </div>
                   <h3 className="mb-3 text-xl font-bold text-foreground group-hover:text-[#39FF14] transition-colors">{step.title}</h3>
-                  <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors">{step.description}</p>
+                  <p className="text-sm sm:text-base text-foreground/80 group-hover:text-foreground/90 transition-colors">{step.description}</p>
                 </div>
               </div>
 

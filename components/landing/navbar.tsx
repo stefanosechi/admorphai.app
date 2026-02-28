@@ -44,7 +44,7 @@ export function Navbar() {
             <Link href="https://admorph.lovable.app/auth">Log in</Link>
           </Button>
           <Button asChild className="bg-[#39FF14] text-black font-bold hover:bg-[#32d613] shadow-[0_0_20px_rgba(57,255,20,0.4)] hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] transition-all transform hover:-translate-y-0.5">
-            <Link href="https://calendly.com/" target="_blank">Book Demo</Link>
+            <Link href="https://admorphai.setmore.com" target="_blank">Book Demo</Link>
           </Button>
         </div>
 
@@ -95,7 +95,7 @@ export function Navbar() {
                 <Link href="https://admorph.lovable.app/auth">Log in</Link>
               </Button>
               <Button asChild className="w-full bg-[#39FF14] text-black font-bold shadow-[0_0_20px_rgba(57,255,20,0.3)]" onClick={() => setIsOpen(false)}>
-                <Link href="https://calendly.com/" target="_blank">Book Demo</Link>
+                <Link href="https://admorphai.setmore.com" target="_blank">Book Demo</Link>
               </Button>
             </div>
           </nav>

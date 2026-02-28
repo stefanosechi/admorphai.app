@@ -152,14 +152,14 @@ export function Testimonials() {
               <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
 
-            <div className="overflow-hidden w-full px-4">
+            <div className="overflow-hidden w-full px-0 sm:px-4">
               <motion.div
                 className="flex"
                 animate={{ x: `-${currentIndex * 100}%` }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 {testimonials.map((testimonial, index) => (
-                  <div key={index} className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <div key={index} className="w-full flex-shrink-0 px-0 sm:px-4">
                     <div className="rounded-2xl border border-[#39FF14]/20 bg-card p-6 md:p-8 hover:border-[#39FF14]/40 transition-colors h-full">
                       <div className="mb-4 flex items-center gap-4">
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#39FF14] text-lg font-bold text-black shadow-[0_0_15px_rgba(57,255,20,0.4)]">
@@ -177,7 +177,7 @@ export function Testimonials() {
                           <Star key={i} className="h-4 w-4 fill-[#39FF14] text-[#39FF14]" />
                         ))}
                       </div>
-                      <p className="text-muted-foreground italic">&quot;{testimonial.content}&quot;</p>
+                      <p className="text-sm sm:text-base text-foreground/80 italic">&quot;{testimonial.content}&quot;</p>
                     </div>
                   </div>
                 ))}

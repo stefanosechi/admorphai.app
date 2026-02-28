@@ -116,7 +116,7 @@ export function Footer() {
               © 2026 AdMorph AI. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground/60">
-              sab technologies IE0193642SB
+              Sab Tecnologies VAT IE0193642SB Apartment 3 Cullenswood park, Dublin, Ireland. 
             </p>
           </div>
           <div className="flex flex-col items-center sm:items-end gap-1">
@@ -124,7 +124,7 @@ export function Footer() {
               Made with AI, for AI-powered marketing
             </p>
             <p className="text-sm text-muted-foreground flex items-center gap-1">
-              Made with <Heart className="h-3 w-3 fill-red-500 text-red-500 animate-pulse" /> in Italy
+              Made with <Heart className="h-3 w-3 fill-red-500 text-red-500 animate-pulse" /> in Europe
             </p>
           </div>
         </div>
