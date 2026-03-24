@@ -43,19 +43,22 @@ export function Navbar() {
           <Button asChild className="bg-[#39FF14] text-black font-bold hover:bg-[#32d613] shadow-[0_0_20px_rgba(57,255,20,0.4)] hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] transition-all transform hover:-translate-y-0.5">
             <Link href="https://admorph.lovable.app/auth">Log in</Link>
           </Button>
+        </div>
+
+        <div className="flex items-center gap-4">
           <Button asChild className="bg-[#39FF14] text-black font-bold hover:bg-[#32d613] shadow-[0_0_20px_rgba(57,255,20,0.4)] hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] transition-all transform hover:-translate-y-0.5">
             <Link href="https://admorphai.setmore.com" target="_blank">Book Demo</Link>
           </Button>
-        </div>
 
-        <button
-          type="button"
-          className="md:hidden text-foreground p-2"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+          <button
+            type="button"
+            className="md:hidden text-foreground p-2"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -93,9 +96,6 @@ export function Navbar() {
             <div className="flex flex-col gap-3 pt-6 border-t border-[#39FF14]/10">
               <Button asChild className="w-full bg-[#39FF14] text-black font-bold shadow-[0_0_20px_rgba(57,255,20,0.3)]" onClick={() => setIsOpen(false)}>
                 <Link href="https://admorph.lovable.app/auth">Log in</Link>
-              </Button>
-              <Button asChild className="w-full bg-[#39FF14] text-black font-bold shadow-[0_0_20px_rgba(57,255,20,0.3)]" onClick={() => setIsOpen(false)}>
-                <Link href="https://admorphai.setmore.com" target="_blank">Book Demo</Link>
               </Button>
             </div>
           </nav>

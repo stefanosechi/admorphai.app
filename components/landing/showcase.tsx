@@ -35,13 +35,31 @@ const showcaseItems = [
     category: "Media",
     src: "/video%20slideshow/admorph-media-5.mp4",
   },
+  {
+    id: 6,
+    title: "AdMorph Media 6",
+    category: "Media",
+    src: "/video%20slideshow/admorph-media-6.mp4",
+  },
+  {
+    id: 7,
+    title: "AdMorph Media 7",
+    category: "Media",
+    src: "/video%20slideshow/admorph-media-7.mp4",
+  },
+  {
+    id: 8,
+    title: "AdMorph Media 8",
+    category: "Media",
+    src: "/video%20slideshow/admorph-media-8.mp4",
+  },
 ]
 
 export function Showcase() {
-  const duplicatedItems = [...showcaseItems, ...showcaseItems, ...showcaseItems, ...showcaseItems]
+  const duplicatedItems = [...showcaseItems, ...showcaseItems]
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   const [mutedState, setMutedState] = useState<boolean[]>(() =>
-    Array(showcaseItems.length * 4).fill(true),
+    Array(showcaseItems.length * 2).fill(true),
   )
   const controls = useAnimation()
   const [isHovered, setIsHovered] = useState(false)
@@ -100,11 +118,11 @@ export function Showcase() {
         onTouchEnd={() => setIsHovered(false)}
       >
         <motion.div
-          className="flex gap-6 px-4 md:px-0"
-          animate={!isMobile && !isHovered ? { x: [0, -1000] } : {}}
+          className="flex gap-4 md:gap-6 px-4 md:px-0"
+          animate={!isMobile && !isHovered ? { x: [0, -1500] } : {}}
           transition={{
             x: {
-              duration: 20,
+              duration: 30,
               repeat: Infinity,
               ease: "linear",
               repeatType: "loop",
@@ -115,7 +133,7 @@ export function Showcase() {
           {duplicatedItems.map((item, index) => (
             <div
               key={`${item.id}-${index}`}
-              className="group relative h-96 w-64 flex-shrink-0 overflow-hidden rounded-xl border border-[#39FF14]/30 bg-secondary transition-all hover:-translate-y-1 hover:border-[#39FF14] hover:shadow-[0_0_30px_rgba(57,255,20,0.35)] sm:h-[460px] sm:w-56"
+              className="group relative h-72 w-48 flex-shrink-0 overflow-hidden rounded-xl border border-[#39FF14]/30 bg-secondary transition-all hover:-translate-y-1 hover:border-[#39FF14] hover:shadow-[0_0_30px_rgba(57,255,20,0.35)] sm:h-[460px] sm:w-56"
             >
               <div className="relative h-full w-full">
                 <video

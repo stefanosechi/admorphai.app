@@ -4,8 +4,30 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight, Play, Sparkles } from "lucide-react"
 import { motion } from "framer-motion"
+import { useRef, useState } from "react"
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const videoContainerRef = useRef<HTMLDivElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play()
+      setIsPlaying(true)
+    }
+  }
+
+  const handleWatchDemo = () => {
+    if (videoContainerRef.current) {
+      videoContainerRef.current.scrollIntoView({ behavior: "smooth", block: "center" })
+      // Avvia il video dopo un piccolo delay per permettere lo scroll
+      setTimeout(() => {
+        handlePlay()
+      }, 500)
+    }
+  }
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-background pt-16">
       {/* Main green glow at top */}
@@ -67,7 +89,12 @@ export function Hero() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="gap-2 border-[#39FF14]/50 text-[#39FF14] hover:bg-[#39FF14]/10 hover:border-[#39FF14] bg-transparent transition-all">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              onClick={handleWatchDemo}
+              className="gap-2 border-[#39FF14]/50 text-[#39FF14] hover:bg-[#39FF14]/10 hover:border-[#39FF14] bg-transparent transition-all"
+            >
               <Play className="h-4 w-4 fill-current" />
               Watch Demo
             </Button>
@@ -79,22 +106,37 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
             className="mt-16 w-full max-w-5xl"
+            ref={videoContainerRef}
           >
             <div className="relative overflow-hidden rounded-2xl border border-[#39FF14]/30 bg-card shadow-[0_0_60px_rgba(57,255,20,0.15)]">
-              <div className="aspect-video bg-gradient-to-br from-card via-secondary to-card">
-                <div className="flex h-full items-center justify-center">
-                  <div className="relative">
-                    <div className="absolute -inset-4 animate-pulse rounded-full bg-[#39FF14]/30 blur-xl" />
-                    <div className="absolute -inset-8 animate-pulse rounded-full bg-[#39FF14]/10 blur-2xl" />
-                    <button
-                      type="button"
-                      className="relative flex h-20 w-20 items-center justify-center rounded-full bg-[#39FF14] text-black transition-transform hover:scale-110 shadow-[0_0_40px_rgba(57,255,20,0.5)]"
-                      aria-label="Play demo video"
-                    >
-                      <Play className="h-8 w-8 fill-current" />
-                    </button>
+              <div className="aspect-video relative">
+                <video
+                   ref={videoRef}
+                   src="/video%20tutorial/video-tutorial-admorphai-test1.mp4#t=0.001"
+                   className="h-full w-full object-cover"
+                  playsInline
+                  controls={isPlaying}
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                />
+                {!isPlaying && (
+                  <div 
+                    className="absolute inset-0 flex items-center justify-center bg-black/10 backdrop-blur-[1px] cursor-pointer group"
+                    onClick={handlePlay}
+                  >
+                    <div className="relative">
+                      <div className="absolute -inset-4 animate-pulse rounded-full bg-[#39FF14]/30 blur-xl" />
+                      <div className="absolute -inset-8 animate-pulse rounded-full bg-[#39FF14]/10 blur-2xl" />
+                      <button
+                        type="button"
+                        className="relative flex h-20 w-20 items-center justify-center rounded-full bg-[#39FF14] text-black transition-transform group-hover:scale-110 shadow-[0_0_40px_rgba(57,255,20,0.5)]"
+                        aria-label="Play demo video"
+                      >
+                        <Play className="h-8 w-8 fill-current" />
+                      </button>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
             <div className="mt-4 text-center">
@@ -105,24 +147,6 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-xs text-muted-foreground/60">Scroll Down</span>
-          <div className="h-12 w-6 rounded-full border border-muted-foreground/20 p-1">
-            <motion.div
-              animate={{ y: [0, 24, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="h-2 w-full rounded-full bg-[#39FF14]/50"
-            />
-          </div>
-        </div>
-      </motion.div>
     </section>
   )
 }
