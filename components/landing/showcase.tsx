@@ -1,7 +1,6 @@
 "use client"
 
-import { motion, useAnimation } from "framer-motion"
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState } from "react"
 import { Maximize2 } from "lucide-react"
 
 const showcaseItems = [
@@ -56,23 +55,10 @@ const showcaseItems = [
 ]
 
 export function Showcase() {
-  const duplicatedItems = [...showcaseItems, ...showcaseItems]
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   const [mutedState, setMutedState] = useState<boolean[]>(() =>
-    Array(showcaseItems.length * 2).fill(true),
+    Array(showcaseItems.length).fill(true),
   )
-  const controls = useAnimation()
-  const [isHovered, setIsHovered] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
-  }, [])
 
   const handleToggleMute = (index: number) => {
     const video = videoRefs.current[index]
@@ -111,29 +97,13 @@ export function Showcase() {
       </div>
 
       <div 
-        className="relative overflow-hidden"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onTouchStart={() => setIsHovered(true)}
-        onTouchEnd={() => setIsHovered(false)}
+        className="relative overflow-x-auto overflow-y-hidden no-scrollbar snap-x snap-mandatory px-6 md:px-0"
       >
-        <motion.div
-          className="flex gap-6 px-6 md:px-0"
-          animate={!isHovered ? { x: [0, -2000] } : {}}
-          transition={{
-            x: {
-              duration: 40,
-              repeat: Infinity,
-              ease: "linear",
-              repeatType: "loop",
-            }
-          }}
-          style={{ x: !isHovered ? 0 : undefined }}
-        >
-          {duplicatedItems.map((item, index) => (
+        <div className="flex gap-6 py-4 md:justify-center lg:justify-start">
+          {showcaseItems.map((item, index) => (
             <div
-              key={`${item.id}-${index}`}
-              className="group relative h-[400px] w-64 flex-shrink-0 overflow-hidden rounded-xl border border-[#39FF14]/30 bg-secondary transition-all hover:-translate-y-1 hover:border-[#39FF14] hover:shadow-[0_0_30px_rgba(57,255,20,0.35)] sm:h-[460px] sm:w-56"
+              key={item.id}
+              className="group relative h-[400px] w-64 flex-shrink-0 snap-center overflow-hidden rounded-xl border border-[#39FF14]/30 bg-secondary transition-all hover:-translate-y-1 hover:border-[#39FF14] hover:shadow-[0_0_30px_rgba(57,255,20,0.35)] sm:h-[460px] sm:w-56"
             >
               <div className="relative h-full w-full">
                 <video
@@ -167,7 +137,7 @@ export function Showcase() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
 
         <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-card to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-card to-transparent" />
