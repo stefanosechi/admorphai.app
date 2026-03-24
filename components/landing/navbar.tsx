@@ -45,7 +45,7 @@ export function Navbar() {
           </Button>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-1">
           <Button asChild className="bg-[#39FF14] text-black font-bold hover:bg-[#32d613] shadow-[0_0_20px_rgba(57,255,20,0.4)] hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] transition-all transform hover:-translate-y-0.5">
             <Link href="https://admorphai.setmore.com" target="_blank">Book Demo</Link>
           </Button>
